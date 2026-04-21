@@ -1,0 +1,231 @@
+{
+  "metadata": {
+    "generated_at": "2026-04-06T02:59:40",
+    "source_files": [
+      "模型训练/原始数据/final_all_data/exercise_contest/data_train.json",
+      "模型训练/原始数据/final_all_data/exercise_contest/data_valid.json"
+    ],
+    "source_sample_counts": {
+      "模型训练/原始数据/final_all_data/exercise_contest/data_train.json": 154592,
+      "模型训练/原始数据/final_all_data/exercise_contest/data_valid.json": 17131
+    },
+    "total_samples": 171723,
+    "multi_label_samples": 35441,
+    "current_model_charges": [
+      "盗窃",
+      "危险驾驶",
+      "故意伤害",
+      "交通肇事",
+      "走私、贩卖、运输、制造毒品",
+      "容留他人吸毒",
+      "诈骗",
+      "寻衅滋事",
+      "抢劫",
+      "信用卡诈骗"
+    ],
+    "notes": [
+      "法条知识库当前只包含法条编号与统计信息，尚未包含法条全文。",
+      "实体类型与关系类型为面向 Agent 工作流设计的抽取 schema，不是数据集自带标注。",
+      "测试样本优先覆盖当前 10 类 BERT 罪名，同时补充多罪名、长文本和量刑压力样本。"
+    ]
+  },
+  "relation_types": [
+    {
+      "relation": "从属于案件",
+      "description": "将人物、行为、证据、法条等节点绑定到案件根节点。",
+      "source_types": [
+        "人物",
+        "受害人",
+        "组织机构",
+        "行为",
+        "情节",
+        "物品",
+        "金额",
+        "时间",
+        "地点",
+        "伤情",
+        "证据",
+        "罪名",
+        "法条",
+        "量刑规则"
+      ],
+      "target_types": [
+        "案件"
+      ],
+      "examples": [
+        "行为 -> 案件",
+        "法条 -> 案件"
+      ]
+    },
+    {
+      "relation": "参与",
+      "description": "表示人物或组织与案件的直接参与关系。",
+      "source_types": [
+        "人物",
+        "组织机构"
+      ],
+      "target_types": [
+        "案件"
+      ],
+      "examples": [
+        "被告人 -> 案件",
+        "涉案公司 -> 案件"
+      ]
+    },
+    {
+      "relation": "实施",
+      "description": "表示人物实施了某项行为。",
+      "source_types": [
+        "人物"
+      ],
+      "target_types": [
+        "行为"
+      ],
+      "examples": [
+        "段某 -> 持石头击打"
+      ]
+    },
+    {
+      "relation": "作用于",
+      "description": "表示行为作用到受害人、物品或组织上。",
+      "source_types": [
+        "行为"
+      ],
+      "target_types": [
+        "受害人",
+        "物品",
+        "组织机构"
+      ],
+      "examples": [
+        "击打 -> 被害人王某",
+        "骗取 -> 钱款"
+      ]
+    },
+    {
+      "relation": "发生于",
+      "description": "表示行为在某个时间或地点发生。",
+      "source_types": [
+        "行为"
+      ],
+      "target_types": [
+        "时间",
+        "地点"
+      ],
+      "examples": [
+        "醉酒驾驶 -> 2015年6月23日",
+        "抢劫 -> 某路口"
+      ]
+    },
+    {
+      "relation": "使用工具",
+      "description": "表示行为或人物使用了某件涉案物品。",
+      "source_types": [
+        "人物",
+        "行为"
+      ],
+      "target_types": [
+        "物品"
+      ],
+      "examples": [
+        "段某 -> 石头",
+        "抢劫行为 -> 刀具"
+      ]
+    },
+    {
+      "relation": "涉及金额",
+      "description": "表示行为、案件或量刑规则涉及具体金额。",
+      "source_types": [
+        "案件",
+        "行为",
+        "量刑规则"
+      ],
+      "target_types": [
+        "金额"
+      ],
+      "examples": [
+        "诈骗行为 -> 3000元",
+        "罚金建议 -> 5000元"
+      ]
+    },
+    {
+      "relation": "造成",
+      "description": "表示行为导致伤情、损失或其他后果。",
+      "source_types": [
+        "行为"
+      ],
+      "target_types": [
+        "伤情",
+        "情节",
+        "金额"
+      ],
+      "examples": [
+        "殴打 -> 轻伤一级",
+        "肇事 -> 财产损失"
+      ]
+    },
+    {
+      "relation": "支持证据",
+      "description": "表示某项证据支持某个行为、伤情、罪名或量刑判断。",
+      "source_types": [
+        "证据"
+      ],
+      "target_types": [
+        "行为",
+        "伤情",
+        "罪名",
+        "量刑规则"
+      ],
+      "examples": [
+        "司法鉴定意见 -> 轻伤一级",
+        "供述 -> 诈骗行为"
+      ]
+    },
+    {
+      "relation": "指向罪名",
+      "description": "表示事实、行为、情节或证据共同支持某个候选罪名。",
+      "source_types": [
+        "行为",
+        "情节",
+        "伤情",
+        "证据",
+        "案件"
+      ],
+      "target_types": [
+        "罪名"
+      ],
+      "examples": [
+        "醉酒驾驶 -> 危险驾驶",
+        "骗取钱款 -> 诈骗"
+      ]
+    },
+    {
+      "relation": "对应法条",
+      "description": "表示罪名与法条节点之间的静态知识关系。",
+      "source_types": [
+        "罪名"
+      ],
+      "target_types": [
+        "法条"
+      ],
+      "examples": [
+        "盗窃 -> 刑法第264条"
+      ]
+    },
+    {
+      "relation": "约束量刑",
+      "description": "表示法条或量刑情节对量刑规则节点的约束关系。",
+      "source_types": [
+        "法条",
+        "情节",
+        "罪名"
+      ],
+      "target_types": [
+        "量刑规则"
+      ],
+      "examples": [
+        "刑法第234条 -> 常见刑期区间",
+        "酒后 -> 从重提示"
+      ]
+    }
+  ]
+}

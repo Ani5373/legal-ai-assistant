@@ -1,0 +1,14 @@
+{
+  "blocked_keywords": [
+    "test case",
+    "demo",
+    "example only"
+  ],
+  "sensitive_keywords": [],
+  "min_text_length": 10,
+  "max_text_length": 10000,
+  "blocked_patterns": [
+    "^\\s*$",
+    "^test\\s+case"
+  ]
+}

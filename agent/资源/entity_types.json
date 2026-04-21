@@ -1,0 +1,317 @@
+{
+  "metadata": {
+    "generated_at": "2026-04-06T02:59:40",
+    "source_files": [
+      "模型训练/原始数据/final_all_data/exercise_contest/data_train.json",
+      "模型训练/原始数据/final_all_data/exercise_contest/data_valid.json"
+    ],
+    "source_sample_counts": {
+      "模型训练/原始数据/final_all_data/exercise_contest/data_train.json": 154592,
+      "模型训练/原始数据/final_all_data/exercise_contest/data_valid.json": 17131
+    },
+    "total_samples": 171723,
+    "multi_label_samples": 35441,
+    "current_model_charges": [
+      "盗窃",
+      "危险驾驶",
+      "故意伤害",
+      "交通肇事",
+      "走私、贩卖、运输、制造毒品",
+      "容留他人吸毒",
+      "诈骗",
+      "寻衅滋事",
+      "抢劫",
+      "信用卡诈骗"
+    ],
+    "notes": [
+      "法条知识库当前只包含法条编号与统计信息，尚未包含法条全文。",
+      "实体类型与关系类型为面向 Agent 工作流设计的抽取 schema，不是数据集自带标注。",
+      "测试样本优先覆盖当前 10 类 BERT 罪名，同时补充多罪名、长文本和量刑压力样本。"
+    ]
+  },
+  "entity_types": [
+    {
+      "type": "案件",
+      "description": "当前待分析案件的根节点，用于挂接全局事实、预测和法条信息。",
+      "required_graph_fields": [
+        "id",
+        "type",
+        "label",
+        "source"
+      ],
+      "optional_fields": [
+        "description",
+        "timestamp",
+        "case_tags"
+      ],
+      "examples": [
+        "案件-2026-0001"
+      ]
+    },
+    {
+      "type": "人物",
+      "description": "案件中的嫌疑人、被告人、同案人员、证人等参与者。",
+      "required_graph_fields": [
+        "id",
+        "type",
+        "label",
+        "source"
+      ],
+      "optional_fields": [
+        "role",
+        "aliases",
+        "evidence_span"
+      ],
+      "examples": [
+        "被告人段某",
+        "证人张某"
+      ]
+    },
+    {
+      "type": "受害人",
+      "description": "受到侵害、伤害、骗取财物或其他损失的一方。",
+      "required_graph_fields": [
+        "id",
+        "type",
+        "label",
+        "source"
+      ],
+      "optional_fields": [
+        "role",
+        "injury_level",
+        "loss_summary",
+        "evidence_span"
+      ],
+      "examples": [
+        "被害人王某",
+        "受害人华某某"
+      ]
+    },
+    {
+      "type": "组织机构",
+      "description": "案件中出现的公司、门店、单位、银行、公安机关等组织。",
+      "required_graph_fields": [
+        "id",
+        "type",
+        "label",
+        "source"
+      ],
+      "optional_fields": [
+        "organization_type",
+        "evidence_span"
+      ],
+      "examples": [
+        "嘉兴市多凌金牛制衣有限公司",
+        "某某银行"
+      ]
+    },
+    {
+      "type": "行为",
+      "description": "案件中的核心动作、违法行为、交易行为、驾驶行为或暴力行为。",
+      "required_graph_fields": [
+        "id",
+        "type",
+        "label",
+        "source"
+      ],
+      "optional_fields": [
+        "action_mode",
+        "evidence_span",
+        "normalized_action"
+      ],
+      "examples": [
+        "持刀抢劫",
+        "醉酒驾驶",
+        "骗取钱款"
+      ]
+    },
+    {
+      "type": "情节",
+      "description": "影响罪名判断或量刑轻重的情节，如自首、累犯、酒后、纠纷起因等。",
+      "required_graph_fields": [
+        "id",
+        "type",
+        "label",
+        "source"
+      ],
+      "optional_fields": [
+        "severity",
+        "evidence_span"
+      ],
+      "examples": [
+        "酒后",
+        "因琐事发生口角",
+        "拒不赔偿"
+      ]
+    },
+    {
+      "type": "物品",
+      "description": "涉案工具、赃物、违禁品、车辆、银行卡等具体物品。",
+      "required_graph_fields": [
+        "id",
+        "type",
+        "label",
+        "source"
+      ],
+      "optional_fields": [
+        "category",
+        "quantity",
+        "evidence_span"
+      ],
+      "examples": [
+        "石头",
+        "手机",
+        "毒品",
+        "信用卡"
+      ]
+    },
+    {
+      "type": "金额",
+      "description": "涉案金额、罚金、赔偿、损失金额等数值类信息。",
+      "required_graph_fields": [
+        "id",
+        "type",
+        "label",
+        "source"
+      ],
+      "optional_fields": [
+        "currency",
+        "normalized_value",
+        "evidence_span"
+      ],
+      "examples": [
+        "529.94元",
+        "3000元"
+      ]
+    },
+    {
+      "type": "时间",
+      "description": "案发时间、抓获时间、饮酒后驾驶时间等时间节点。",
+      "required_graph_fields": [
+        "id",
+        "type",
+        "label",
+        "source"
+      ],
+      "optional_fields": [
+        "normalized_value",
+        "evidence_span"
+      ],
+      "examples": [
+        "2015年11月10日晚9时许"
+      ]
+    },
+    {
+      "type": "地点",
+      "description": "案发地、交易地、查获地、工作单位、道路等空间位置。",
+      "required_graph_fields": [
+        "id",
+        "type",
+        "label",
+        "source"
+      ],
+      "optional_fields": [
+        "location_type",
+        "evidence_span"
+      ],
+      "examples": [
+        "悦来镇石锅烤肉店",
+        "某县莲新公路"
+      ]
+    },
+    {
+      "type": "伤情",
+      "description": "轻伤、重伤、骨折、中毒等受害结果或医学鉴定结果。",
+      "required_graph_fields": [
+        "id",
+        "type",
+        "label",
+        "source"
+      ],
+      "optional_fields": [
+        "severity",
+        "evidence_span"
+      ],
+      "examples": [
+        "轻伤一级",
+        "右额部粉碎性骨折"
+      ]
+    },
+    {
+      "type": "证据",
+      "description": "鉴定意见、证言、勘验笔录、书证等支持事实或罪名判断的证据。",
+      "required_graph_fields": [
+        "id",
+        "type",
+        "label",
+        "source"
+      ],
+      "optional_fields": [
+        "evidence_type",
+        "evidence_span"
+      ],
+      "examples": [
+        "司法鉴定意见",
+        "现场勘验笔录",
+        "被告人供述"
+      ]
+    },
+    {
+      "type": "罪名",
+      "description": "BERT 预测或法条检索后得到的候选罪名节点。",
+      "required_graph_fields": [
+        "id",
+        "type",
+        "label",
+        "source"
+      ],
+      "optional_fields": [
+        "probability",
+        "rank",
+        "normalized_value"
+      ],
+      "examples": [
+        "盗窃",
+        "故意伤害"
+      ]
+    },
+    {
+      "type": "法条",
+      "description": "与案件或罪名关联的刑法条款编号与后续补充的法条正文。",
+      "required_graph_fields": [
+        "id",
+        "type",
+        "label",
+        "source"
+      ],
+      "optional_fields": [
+        "article_number",
+        "text",
+        "source_dataset"
+      ],
+      "examples": [
+        "刑法第264条",
+        "刑法第234条"
+      ]
+    },
+    {
+      "type": "量刑规则",
+      "description": "根据统计规则、本地规则库或后续人工补充形成的量刑建议节点。",
+      "required_graph_fields": [
+        "id",
+        "type",
+        "label",
+        "source"
+      ],
+      "optional_fields": [
+        "penalty_range",
+        "confidence_note",
+        "source_dataset"
+      ],
+      "examples": [
+        "常见刑期区间 7-12 月",
+        "罚金区间 1000-5000 元"
+      ]
+    }
+  ]
+}

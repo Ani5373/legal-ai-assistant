@@ -1,0 +1,581 @@
+{
+  "metadata": {
+    "generated_at": "2026-04-06T02:59:40",
+    "source_files": [
+      "模型训练/原始数据/final_all_data/exercise_contest/data_train.json",
+      "模型训练/原始数据/final_all_data/exercise_contest/data_valid.json"
+    ],
+    "source_sample_counts": {
+      "模型训练/原始数据/final_all_data/exercise_contest/data_train.json": 154592,
+      "模型训练/原始数据/final_all_data/exercise_contest/data_valid.json": 17131
+    },
+    "total_samples": 171723,
+    "multi_label_samples": 35441,
+    "current_model_charges": [
+      "盗窃",
+      "危险驾驶",
+      "故意伤害",
+      "交通肇事",
+      "走私、贩卖、运输、制造毒品",
+      "容留他人吸毒",
+      "诈骗",
+      "寻衅滋事",
+      "抢劫",
+      "信用卡诈骗"
+    ],
+    "notes": [
+      "法条知识库当前只包含法条编号与统计信息，尚未包含法条全文。",
+      "实体类型与关系类型为面向 Agent 工作流设计的抽取 schema，不是数据集自带标注。",
+      "测试样本优先覆盖当前 10 类 BERT 罪名，同时补充多罪名、长文本和量刑压力样本。"
+    ]
+  },
+  "summary": {
+    "case_count": 15,
+    "covered_model_charges": [
+      "盗窃",
+      "危险驾驶",
+      "故意伤害",
+      "交通肇事",
+      "走私、贩卖、运输、制造毒品",
+      "容留他人吸毒",
+      "诈骗",
+      "寻衅滋事",
+      "抢劫",
+      "信用卡诈骗"
+    ],
+    "scenario_labels": [
+      "多法条关联样本",
+      "多罪名联动",
+      "覆盖当前 BERT 标签：交通肇事",
+      "覆盖当前 BERT 标签：信用卡诈骗",
+      "覆盖当前 BERT 标签：危险驾驶",
+      "覆盖当前 BERT 标签：容留他人吸毒",
+      "覆盖当前 BERT 标签：寻衅滋事",
+      "覆盖当前 BERT 标签：抢劫",
+      "覆盖当前 BERT 标签：故意伤害",
+      "覆盖当前 BERT 标签：盗窃",
+      "覆盖当前 BERT 标签：诈骗",
+      "覆盖当前 BERT 标签：走私、贩卖、运输、制造毒品",
+      "长文本抽取压力测试",
+      "高刑期样本",
+      "高罚金样本"
+    ]
+  },
+  "cases": [
+    {
+      "case_id": "case-35520",
+      "selection_score": 180.05,
+      "fact": "公诉机关指控：一、××2016年5月29日19时许，被告人杨1某伙同杨某2、李某1（均已判刑）经事先预谋，以戴帽子、口罩、手套等方式进行伪装后，敲门进入杨某1居住的霞浦县牙城镇中心小学旁造福工程小区3号楼302室，三人一起将杨某1控制并用黄色胶带捆绑杨某1，抢走该房内的现金人民币19000元、步步高手机1台等物。经霞浦县价格认证中心鉴定，该部手机的价值为人民币1271元。",
+      "source": {
+        "file": "模型训练/原始数据/final_all_data/exercise_contest/data_train.json",
+        "line_number": 35520,
+        "sample_id": "模型训练/原始数据/final_all_data/exercise_contest/data_train.json#35520"
+      },
+      "tags": [
+        "财产型",
+        "暴力型",
+        "多罪名",
+        "含罚金"
+      ],
+      "expected": {
+        "raw_accusations": [
+          "抢劫",
+          "盗窃",
+          "抢夺"
+        ],
+        "normalized_accusations": [
+          "抢劫",
+          "盗窃",
+          "抢夺"
+        ],
+        "relevant_articles": [
+          264,
+          267
+        ],
+        "term_of_imprisonment": {
+          "death_penalty": false,
+          "imprisonment": 162,
+          "life_imprisonment": false
+        },
+        "punish_of_money": 29000.0
+      },
+      "selection_reason": "多法条关联样本"
+    },
+    {
+      "case_id": "case-42746",
+      "selection_score": 183.65,
+      "fact": "公诉机关指控，被告人刘某以非法占有为目的，多次入户秘密窃取财物，价值人民币24万余元，属有其他特别严重情节；被告人刘某××甲基苯丙胺1200余克。对被告人刘某应当以××罪、××罪追究刑事责任。同时认定被告人刘某系累犯、对××犯罪有坦白情节。公诉机关当庭提供了相关证据予以证实，诉请本院依照《中华人民共和国刑法》××、××、××××、××××、××之规定予以判处。",
+      "source": {
+        "file": "模型训练/原始数据/final_all_data/exercise_contest/data_train.json",
+        "line_number": 42746,
+        "sample_id": "模型训练/原始数据/final_all_data/exercise_contest/data_train.json#42746"
+      },
+      "tags": [
+        "财产型",
+        "毒品类",
+        "多罪名",
+        "含罚金"
+      ],
+      "expected": {
+        "raw_accusations": [
+          "盗窃",
+          "非法持有毒品"
+        ],
+        "normalized_accusations": [
+          "盗窃",
+          "非法持有毒品"
+        ],
+        "relevant_articles": [
+          264,
+          348
+        ],
+        "term_of_imprisonment": {
+          "death_penalty": false,
+          "imprisonment": 192,
+          "life_imprisonment": false
+        },
+        "punish_of_money": 140000.0
+      },
+      "selection_reason": "多罪名联动"
+    },
+    {
+      "case_id": "case-28673",
+      "selection_score": 134.6,
+      "fact": "临沂市兰山区人民检察院指控，2014年4月23日5时许，被告人邢某驾驶鲁Q×××××号“五菱牌”小型普通客车，沿临沂市兰山区327国道由西向东行驶至周井铺村路段时，将骑人力三轮车的陈某某撞倒，至陈某某创伤性休克当场死亡。肇事后，被告人邢某驾车逃逸。经交通事故责任认定，被告人邢某负事故的全部责任。案发后，被告人邢某到临沂市公安局交警支队直属二大队投案。",
+      "source": {
+        "file": "模型训练/原始数据/final_all_data/exercise_contest/data_train.json",
+        "line_number": 28673,
+        "sample_id": "模型训练/原始数据/final_all_data/exercise_contest/data_train.json#28673"
+      },
+      "tags": [
+        "交通类"
+      ],
+      "expected": {
+        "raw_accusations": [
+          "交通肇事"
+        ],
+        "normalized_accusations": [
+          "交通肇事"
+        ],
+        "relevant_articles": [
+          133,
+          279
+        ],
+        "term_of_imprisonment": {
+          "death_penalty": false,
+          "imprisonment": 36,
+          "life_imprisonment": false
+        },
+        "punish_of_money": 0.0
+      },
+      "selection_reason": "覆盖当前 BERT 标签：交通肇事"
+    },
+    {
+      "case_id": "case-42933",
+      "selection_score": 136.65,
+      "fact": "滁州市琅琊区人民检察院指控：被告人刘某因公司业务扩张等原因，开始借款。2013年下半年起，被告人刘某明知已没有还款能力，仍透支使用他和妻子王某某名下的工商银行、农业银行、徽商银行的共五张信用卡，透支本息共计896997.37元，大部分用于套现偿还公司和个人债务。经银行多次催收后，仍逾期不归还欠款。公诉机关认为：被告人刘某恶意透支信用卡，数额巨大，其行为已触犯《中华人民共和国刑法》××××第（四）项、××之规定，应当以××罪追究其刑事责任。",
+      "source": {
+        "file": "模型训练/原始数据/final_all_data/exercise_contest/data_train.json",
+        "line_number": 42933,
+        "sample_id": "模型训练/原始数据/final_all_data/exercise_contest/data_train.json#42933"
+      },
+      "tags": [
+        "财产型",
+        "含罚金"
+      ],
+      "expected": {
+        "raw_accusations": [
+          "信用卡诈骗"
+        ],
+        "normalized_accusations": [
+          "信用卡诈骗"
+        ],
+        "relevant_articles": [
+          196
+        ],
+        "term_of_imprisonment": {
+          "death_penalty": false,
+          "imprisonment": 90,
+          "life_imprisonment": false
+        },
+        "punish_of_money": 60000.0
+      },
+      "selection_reason": "覆盖当前 BERT 标签：信用卡诈骗"
+    },
+    {
+      "case_id": "case-36725",
+      "selection_score": 128.2667,
+      "fact": "公诉机关指控：2016年1月11日18时6分许，被告人孙某某酒后驾驶鲁Ｂ×××××号宝马轿车行驶至青岛市黄岛区武夷山路与嘉陵江路路口时，与同向行驶的宗某某驾驶的鲁Ｂ×××××号轿车发生事故，后被查获，经抽血检验，其血液中乙醇含量为279.2mg/100ml，属醉酒驾驶机动车。公诉机关认为被告人孙某某在道路上醉酒驾驶机动车，应当以××罪追究其刑事责任。",
+      "source": {
+        "file": "模型训练/原始数据/final_all_data/exercise_contest/data_train.json",
+        "line_number": 36725,
+        "sample_id": "模型训练/原始数据/final_all_data/exercise_contest/data_train.json#36725"
+      },
+      "tags": [
+        "交通类",
+        "含罚金"
+      ],
+      "expected": {
+        "raw_accusations": [
+          "危险驾驶"
+        ],
+        "normalized_accusations": [
+          "危险驾驶"
+        ],
+        "relevant_articles": [
+          354
+        ],
+        "term_of_imprisonment": {
+          "death_penalty": false,
+          "imprisonment": 4,
+          "life_imprisonment": false
+        },
+        "punish_of_money": 18000.0
+      },
+      "selection_reason": "覆盖当前 BERT 标签：危险驾驶"
+    },
+    {
+      "case_id": "case-124636",
+      "selection_score": 123.8,
+      "fact": "公诉机关指控，2015年1月22日至23日期间，被告人涂某某在其入住的彭州市某宾馆206号房间内，提供毒品和吸毒工具，先后三次容留李某、李某某、舒某某吸食毒品，后被公安机关查获，并在房间内搜出白色晶体四袋，装有透明液体的自制吸毒工具一个及锡箔纸等物品。经成都市公安局物证鉴定所鉴定，白色晶体和吸毒工具内的液体中均检出甲基苯丙胺成分。经彭州市公安局甲基安非他明现场检测，被告人涂某某及上述吸毒人员均呈阳性。",
+      "source": {
+        "file": "模型训练/原始数据/final_all_data/exercise_contest/data_train.json",
+        "line_number": 124636,
+        "sample_id": "模型训练/原始数据/final_all_data/exercise_contest/data_train.json#124636"
+      },
+      "tags": [
+        "含罚金"
+      ],
+      "expected": {
+        "raw_accusations": [
+          "容留他人吸毒"
+        ],
+        "normalized_accusations": [
+          "容留他人吸毒"
+        ],
+        "relevant_articles": [
+          134,
+          354
+        ],
+        "term_of_imprisonment": {
+          "death_penalty": false,
+          "imprisonment": 6,
+          "life_imprisonment": false
+        },
+        "punish_of_money": 1000.0
+      },
+      "selection_reason": "覆盖当前 BERT 标签：容留他人吸毒"
+    },
+    {
+      "case_id": "case-40572",
+      "selection_score": -11.7,
+      "fact": "铜鼓县人民检察院指控：2015年9月21日，被告人刘5某与被害人黄某因感情纠葛发生冲突，黄某报案后，次日经铜鼓县公安局城镇派出所民警调解，双方达成协议此后互不相扰。10月2日，刘5某得知黄某与他人合伙的“铜城味道店”开张，又到该店闹事，至12月8日，黄某等人多次报案后，刘5某不顾办案民警的调解与警告，仍继续到“铜城味道店”纠缠、辱骂、拦截黄某，期间，多次发生肢体冲突。经鉴定，黄某的伤情有两次为轻微伤。为证明上述事实，公诉机关在法庭上出示了物证照片、指认现场照片；书证接处警登记表、办案情况说明、刑事判决书等；被告人刘5某的供述与辩解；被害人黄某的陈述；证人时某甲、刘某甲、刘某乙等人的证言；物证鉴定书等证据材料。据此，公诉机关认为，被告人刘5某随意殴打他人身体，致他人轻微伤两次，情节恶劣；追逐、拦截、辱骂他人，情节恶劣，破坏了社会秩序，其行为触犯了《中华人民共和国刑法》××××第（一）项、第（二）项的规定，应当以××罪追究其刑事责任。被告人刘5某在刑罚执行完毕后的五年内再犯应当判处××以上刑罚之罪，系累犯，应当从重处罚。提请本院依法依法判处。针对上述指控，被告人刘5某认为他是多次纠缠黄某，但不是去黄某的店里闹事情，只是去店里拿合同，而且黄某先打他的，他与黄某有肢体冲突，他的行为不构成犯罪，只是一起民事感情纠纷。",
+      "source": {
+        "file": "模型训练/原始数据/final_all_data/exercise_contest/data_train.json",
+        "line_number": 40572,
+        "sample_id": "模型训练/原始数据/final_all_data/exercise_contest/data_train.json#40572"
+      },
+      "tags": [
+        "暴力型",
+        "长文本"
+      ],
+      "expected": {
+        "raw_accusations": [
+          "寻衅滋事"
+        ],
+        "normalized_accusations": [
+          "寻衅滋事"
+        ],
+        "relevant_articles": [
+          393
+        ],
+        "term_of_imprisonment": {
+          "death_penalty": false,
+          "imprisonment": 12,
+          "life_imprisonment": false
+        },
+        "punish_of_money": 0.0
+      },
+      "selection_reason": "覆盖当前 BERT 标签：寻衅滋事"
+    },
+    {
+      "case_id": "case-42287",
+      "selection_score": 91.15,
+      "fact": "南京市高淳区检察院指控，2015年10月至2016年3月，被告人高某在高淳区XX镇、XX镇等地采取在深夜驾驶摩托车尾随单身骑车女性，至僻静地段后逼停对方，或持刀威胁、或言语恐吓等手段，强行抢走被害人财物（合计价值人民币7,636元），并实施抚摸乳房等猥亵行为。为证明上述指控的事实，公诉机关提供了金项链等物证、被害人石某、刘某等人的陈述、现场勘查笔录、南京市公安局高淳分局物证鉴定室出具的物证检验报告书、被告人的户籍资料、归案经过及供述等证据。公诉机关认为，被告人高某以暴力、胁迫等方法，强行劫取他人财物、强行猥亵他人，其行为分别触犯了《中华人民共和国刑法》××第（一）项、××××的规定，应当以××罪、强制猥亵罪追究其刑事责任。被告人高某系判决宣告前一人犯数罪的，依法应数罪并罚。",
+      "source": {
+        "file": "模型训练/原始数据/final_all_data/exercise_contest/data_train.json",
+        "line_number": 42287,
+        "sample_id": "模型训练/原始数据/final_all_data/exercise_contest/data_train.json#42287"
+      },
+      "tags": [
+        "财产型",
+        "暴力型",
+        "含罚金",
+        "长文本"
+      ],
+      "expected": {
+        "raw_accusations": [
+          "抢劫"
+        ],
+        "normalized_accusations": [
+          "抢劫"
+        ],
+        "relevant_articles": [
+          237,
+          263
+        ],
+        "term_of_imprisonment": {
+          "death_penalty": false,
+          "imprisonment": 90,
+          "life_imprisonment": false
+        },
+        "punish_of_money": 5000.0
+      },
+      "selection_reason": "覆盖当前 BERT 标签：抢劫"
+    },
+    {
+      "case_id": "case-18297",
+      "selection_score": 14.15,
+      "fact": "公诉机关起诉指控，1996年3月16日9时许，被告人申7某召集其儿子申A、申C、申B（三人已判刑）、申某生（未到案，另案处理）及本组村民文中堂、文某、文某华、彭某江等人到务某仡佬族苗族自治县镇南镇五星村独竹山组大坳沟与邹某贵家有争议的山林中强行砍树时，由申A、申B分别手持木棒、斧头在山林外放哨，其余人进入山林砍树，申7某到有争议的山林上边邹某贵家门口告诉邹某贵、邹某江自己要砍树，遭邹某贵、邹4某、邹某江等人阻止后，申A、申B、申C、申某生遂持木棒、斧头殴打对方，申7某与邹4某抢夺斧头。在双方打斗过程中，邹某江被殴打致抢救无效死亡，邹某贵、蔡某婵、邹某江、邹成某、邹A被打伤。在邹某贵等人退回家中后，申7某等人继续砍伐树木并运回申7某家中。随后，在公安机关对申7某进行调查时申7某外逃。2016年8月19日务某仡佬族苗族自治县公安局对申7某执行逮捕。经鉴定，邹某江系钝器打击头部致颅骨骨折，引起颅内血肿而死亡。邹某贵所受损伤为重伤，蔡某婵、邹某江为轻伤，邹成某为轻微伤，邹A为轻微伤。公诉机关以被告人申7某的行为触犯1979年《中华人民共和国刑法》××之规定，应以××罪追究刑事责任为由，向本院提起公诉，请求依法审判。",
+      "source": {
+        "file": "模型训练/原始数据/final_all_data/exercise_contest/data_train.json",
+        "line_number": 18297,
+        "sample_id": "模型训练/原始数据/final_all_data/exercise_contest/data_train.json#18297"
+      },
+      "tags": [
+        "暴力型",
+        "含伤情",
+        "长文本"
+      ],
+      "expected": {
+        "raw_accusations": [
+          "故意伤害"
+        ],
+        "normalized_accusations": [
+          "故意伤害"
+        ],
+        "relevant_articles": [
+          134
+        ],
+        "term_of_imprisonment": {
+          "death_penalty": false,
+          "imprisonment": 60,
+          "life_imprisonment": false
+        },
+        "punish_of_money": 0.0
+      },
+      "selection_reason": "覆盖当前 BERT 标签：故意伤害"
+    },
+    {
+      "case_id": "case-03823",
+      "selection_score": 124.7667,
+      "fact": "永嘉县人民检察院指控，2009年10月初，被告人麻某来到永嘉县上塘镇xxx村xx号，秘密潜入被害人蒋某乙家中，盗走电脑、电视机、音响等财物。经现场勘查，提取指纹一枚，经永嘉县公安司法鉴定中心比对，系被告人麻某所留。对于以上指控事实，公诉机关提交了相应的证据。公诉机关认为，被告人麻某以非法占有为目的，入户秘密窃取他人财物，其行为已构成××罪。诉请本院依照《中华人民共和国刑法》××之规定，予以判处。",
+      "source": {
+        "file": "模型训练/原始数据/final_all_data/exercise_contest/data_train.json",
+        "line_number": 3823,
+        "sample_id": "模型训练/原始数据/final_all_data/exercise_contest/data_train.json#3823"
+      },
+      "tags": [
+        "财产型",
+        "含罚金"
+      ],
+      "expected": {
+        "raw_accusations": [
+          "盗窃"
+        ],
+        "normalized_accusations": [
+          "盗窃"
+        ],
+        "relevant_articles": [
+          245,
+          264
+        ],
+        "term_of_imprisonment": {
+          "death_penalty": false,
+          "imprisonment": 4,
+          "life_imprisonment": false
+        },
+        "punish_of_money": 1500.0
+      },
+      "selection_reason": "覆盖当前 BERT 标签：盗窃"
+    },
+    {
+      "case_id": "case-02526",
+      "selection_score": 117.35,
+      "fact": "南京市玄武区人民检察院指控，2014年7月28日，被告人苍某甲在互联网陌陌聊天搭识张某乙，虚构自己系南京市少年宫的老师，骗取其信任，谎称无父母并以妹妹在医院抢救需要钱为由，先后多次骗得张某乙人民币114000元。公诉机关认为，被告人苍某甲的行为已构成××罪。现提起公诉，请依法判处。",
+      "source": {
+        "file": "模型训练/原始数据/final_all_data/exercise_contest/data_train.json",
+        "line_number": 2526,
+        "sample_id": "模型训练/原始数据/final_all_data/exercise_contest/data_train.json#2526"
+      },
+      "tags": [
+        "财产型",
+        "含罚金"
+      ],
+      "expected": {
+        "raw_accusations": [
+          "诈骗"
+        ],
+        "normalized_accusations": [
+          "诈骗"
+        ],
+        "relevant_articles": [
+          266
+        ],
+        "term_of_imprisonment": {
+          "death_penalty": false,
+          "imprisonment": 36,
+          "life_imprisonment": false
+        },
+        "punish_of_money": 10000.0
+      },
+      "selection_reason": "覆盖当前 BERT 标签：诈骗"
+    },
+    {
+      "case_id": "case-28411",
+      "selection_score": 50.9,
+      "fact": "安徽省阜阳市人民检察院指控：1.2013年，被告人王2某分六次卖给艾某某（不予起诉）毒品海洛因共计约0.6克。2.2013年4月13日下午，被告人王2某乘坐艾某某驾驶的车牌号为豫PJW577的起亚牌轿车，从河南省周口市前往临泉县。二人返回途经界首市砖集镇黄庄路口时，被界首市公安局民警拦查。王2某将毒品海洛因抛洒在车内，经清扫进行称量，净重91.3克。另从王2某身上查获冰毒0.7克、麻古0.7克、海洛因0.4克。经阜阳市公安局鉴定，在王2某身上查获的冰毒和麻古片中检出甲基苯丙胺成分；在粉末状毒品中检出海洛因成分，含量为15.5%。为证实指控的犯罪事实，公诉机关当庭宣读并出示了书证、检查笔录、称量笔录、鉴定意见、证人证言、视听资料及被告人供述等证据。据此认为，被告人王2某违反国家对毒品的××，贩卖、运输毒品，其行为触犯《中华人民共和国刑法》××××第（一）项之规定，构成贩卖、运输毒品罪。提请本院依法判处。",
+      "source": {
+        "file": "模型训练/原始数据/final_all_data/exercise_contest/data_train.json",
+        "line_number": 28411,
+        "sample_id": "模型训练/原始数据/final_all_data/exercise_contest/data_train.json#28411"
+      },
+      "tags": [
+        "毒品类",
+        "长文本"
+      ],
+      "expected": {
+        "raw_accusations": [
+          "[走私、贩卖、运输、制造]毒品"
+        ],
+        "normalized_accusations": [
+          "走私、贩卖、运输、制造毒品"
+        ],
+        "relevant_articles": [
+          347,
+          356
+        ],
+        "term_of_imprisonment": {
+          "death_penalty": false,
+          "imprisonment": 0,
+          "life_imprisonment": true
+        },
+        "punish_of_money": 0.0
+      },
+      "selection_reason": "覆盖当前 BERT 标签：走私、贩卖、运输、制造毒品"
+    },
+    {
+      "case_id": "case-36120",
+      "selection_score": 133.95,
+      "fact": "湖南省岳阳市人民检察院指控：1、贩卖毒品罪2014年3月，被告人冷某和战某、李某商量在山东省莱阳市贩卖毒品甲基苯丙胺（冰毒）牟利，在得知鲁某认识广东省的毒品上家后，三人又与鲁某商定，由冷某、战某、李某负责筹措毒资并贩卖，由鲁某负责从毒品上家购进毒品。2014年4月，冷某筹措了2万元人民币，李某筹措了5万元人民币，鲁某、战某、李某携带毒资租车到广东省广州市购买1000克毒品甲基苯丙胺后返回山东省莱阳市，冷某、战某、李某等人将上述毒品予以贩卖。2、××罪2015年2月至3月期间，被告人冷某在其车牌为鲁F×××××的三菱牌吉普车内，容留赵某、隋某吸食毒品甲基苯丙胺1次、单独容留隋某吸食毒品甲基苯丙胺2次、容留左某、宫某经吸食毒品甲基苯丙胺4次。",
+      "source": {
+        "file": "模型训练/原始数据/final_all_data/exercise_contest/data_train.json",
+        "line_number": 36120,
+        "sample_id": "模型训练/原始数据/final_all_data/exercise_contest/data_train.json#36120"
+      },
+      "tags": [
+        "毒品类",
+        "多罪名",
+        "含罚金",
+        "长文本"
+      ],
+      "expected": {
+        "raw_accusations": [
+          "非法[持有、私藏][枪支、弹药]",
+          "[走私、贩卖、运输、制造]毒品",
+          "容留他人吸毒"
+        ],
+        "normalized_accusations": [
+          "非法持有、私藏枪支、弹药",
+          "走私、贩卖、运输、制造毒品",
+          "容留他人吸毒"
+        ],
+        "relevant_articles": [
+          347,
+          354
+        ],
+        "term_of_imprisonment": {
+          "death_penalty": false,
+          "imprisonment": 204,
+          "life_imprisonment": false
+        },
+        "punish_of_money": 40000.0
+      },
+      "selection_reason": "长文本抽取压力测试"
+    },
+    {
+      "case_id": "case-18024",
+      "selection_score": 181.3,
+      "fact": "公诉机关指控：一、××罪2013年8月12日上午，被告人曹3某窜至金华市金1某区曹宅镇潘二村46号被害人张某丙家中，在实施××过程中被回家的被害人张某丙发现，被告人曹3某为抗拒抓捕与被害人张某丙发生扭打，并用老虎钳打中被害人张某丙头脸部及身上致其受伤，后被告人曹3某逃至门外弄堂时被村民当场抓获。经金华市公安局物证鉴定所鉴定，被害人张某丙所受损伤系轻微伤。",
+      "source": {
+        "file": "模型训练/原始数据/final_all_data/exercise_contest/data_train.json",
+        "line_number": 18024,
+        "sample_id": "模型训练/原始数据/final_all_data/exercise_contest/data_train.json#18024"
+      },
+      "tags": [
+        "财产型",
+        "暴力型",
+        "多罪名",
+        "含罚金"
+      ],
+      "expected": {
+        "raw_accusations": [
+          "抢劫",
+          "盗窃"
+        ],
+        "normalized_accusations": [
+          "抢劫",
+          "盗窃"
+        ],
+        "relevant_articles": [
+          264,
+          269
+        ],
+        "term_of_imprisonment": {
+          "death_penalty": false,
+          "imprisonment": 216,
+          "life_imprisonment": false
+        },
+        "punish_of_money": 28000.0
+      },
+      "selection_reason": "高刑期样本"
+    },
+    {
+      "case_id": "case-40997",
+      "selection_score": 182.6,
+      "fact": "湘阴县人民检察院指控，被告人张某某以贩养吸，于2014年7月25日从长沙市马王堆钢材市场“四哥”（身份不明）手中购入毒品冰毒和麻古后贩卖给湘阴县下线吸毒人员。该院以被告人张某某的行为构成贩卖毒品罪，其因贩卖毒品被判过刑，且在判决宣告以后，刑罚尚未执行完毕期间，又贩卖毒品，提请依照《中华人民共和国刑法》××××、××、××、××、××之规定，予以判处。",
+      "source": {
+        "file": "模型训练/原始数据/final_all_data/exercise_contest/data_train.json",
+        "line_number": 40997,
+        "sample_id": "模型训练/原始数据/final_all_data/exercise_contest/data_train.json#40997"
+      },
+      "tags": [
+        "毒品类",
+        "多罪名",
+        "含罚金"
+      ],
+      "expected": {
+        "raw_accusations": [
+          "[走私、贩卖、运输、制造]毒品",
+          "[窝藏、转移、隐瞒][毒品、毒赃]"
+        ],
+        "normalized_accusations": [
+          "走私、贩卖、运输、制造毒品",
+          "窝藏、转移、隐瞒毒品、毒赃"
+        ],
+        "relevant_articles": [
+          347,
+          356,
+          357
+        ],
+        "term_of_imprisonment": {
+          "death_penalty": false,
+          "imprisonment": 180,
+          "life_imprisonment": false
+        },
+        "punish_of_money": 60000.0
+      },
+      "selection_reason": "高罚金样本"
+    }
+  ]
+}

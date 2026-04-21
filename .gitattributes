@@ -1,0 +1,35 @@
+# 自动检测文本文件并进行行尾规范化
+* text=auto
+
+# 源代码
+*.py text eol=lf
+*.js text eol=lf
+*.jsx text eol=lf
+*.ts text eol=lf
+*.tsx text eol=lf
+*.json text eol=lf
+*.md text eol=lf
+*.yml text eol=lf
+*.yaml text eol=lf
+
+# Windows 脚本
+*.bat text eol=crlf
+*.ps1 text eol=crlf
+
+# 二进制文件
+*.pt binary
+*.pth binary
+*.bin binary
+*.pdparams binary
+*.pdiparams binary
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.pdf binary
+
+# 大文件提示（虽然已在 .gitignore 中排除）
+*.pt filter=lfs diff=lfs merge=lfs -text
+*.pth filter=lfs diff=lfs merge=lfs -text
+*.bin filter=lfs diff=lfs merge=lfs -text

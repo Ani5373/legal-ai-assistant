@@ -1,0 +1,80 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+*.log
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# 模型文件 - 需要从网盘下载
+模型训练/训练输出/*.pt
+模型训练/训练输出/*.pth
+模型训练/预训练模型/
+
+# Node.js
+网页/legal-ai-web/node_modules/
+网页/legal-ai-web/dist/
+网页/legal-ai-web/.next/
+网页/legal-ai-web/out/
+网页/legal-ai-web/build/
+网页/legal-ai-web/.DS_Store
+网页/legal-ai-web/*.log
+网页/legal-ai-web/npm-debug.log*
+网页/legal-ai-web/yarn-debug.log*
+网页/legal-ai-web/yarn-error.log*
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# 临时文件
+*.tmp
+*.temp
+*.cache
+
+# 日志文件
+*.log
+logs/
+agent/logs/*.jsonl
+
+# 缓存文件
+agent/memory/cache/*.json
+agent/memory/raw/*.txt
+agent/memory/topics/*.json
+
+# 测试输出
+.pytest_cache/
+.coverage
+htmlcov/
+*.cover
+
+# 操作系统
+Thumbs.db
+.DS_Store
